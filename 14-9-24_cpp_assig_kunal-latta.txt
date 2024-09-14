@@ -1,0 +1,247 @@
+que 1.  What is the purpose of a constructor in a C++ class?
+
+ans 1-->
+
+The constructor is a special member function of a class that is automatically called when an object of the class is created. its main purpose is to initialize the object's member variables and set up any necessary resources that the object might need during its lifetime.
+
+
+
+que 2.   What is inheritance in C++ and what are its types?
+
+ans 2-->
+
+Inheritance allows a new class to acquire the properties and behaviors of an existing class. This promotes code reuse and establishes a hierarchical relationship between classes.
+
+types of inheritance---
+
+1.single inheritance --> a derived class inherits from only one base class. 
+
+2.multiple inheritance --> a derived class inherits from more than one base class.
+
+3.multilevel inheritance --> : a class is derived from another derived class, creating a chain of inheritance.
+
+4.hierarchical inheritance --> multiple derived classes inherit from a single base class.
+
+5.hybrid inheritance --> it is a combination of two or more types of inheritance.
+
+
+
+
+que 3.  What is polymorphism in C++ and how can it be achieved?
+
+ans 3--->
+
+it allows objects of different classes to be treated as objects of a common base class.
+
+polymorphism can be achieved in two ways--
+
+1.compile-time polymorphism ---> This type of polymorphism is resolved during the compilation of the program.
+
+	it is achived by--
+
+	1.Function Overloading
+	2.Operator Overloading
+	3.Template Overloading
+
+2.run-time polymorphism ---> it is achieved using inheritance and virtual functions. 
+
+
+
+
+que 4.  What is a virtual function in C++, and how does it contribute to polymorphism?
+
+ans 4--->
+
+it is a member function in a base class that we can override in a derived class. It is declared using the virtual keyword in the base class and allows us to achieve run-time polymorphism.
+
+it allows a base class reference or pointer to call methods of a derived class, even if the reference or pointer is of the base class type.
+
+
+
+
+
+que 5.  Explain the concept of data hiding in C++ and how it is implemented.
+
+ans 5---> 
+ 
+it is the practice of restricting access to certain data members and methods of a class from outside code. 
+
+the primary goal of data hiding is to protect the internal state of an object and ensure that it can only be modified in controlled ways.
+
+data hiding is implemented using access specifiers such as private, protected, and public. 
+
+
+
+
+
+que 6.  What is a friend function in C++, and when would you use it?
+
+ans 6--->
+
+it is a function that is not a member of a class but has the ability to access the class private and protected members. normally, private and protected members of a class are not accessible from outside the class but by declaring a function as a friend of the class, we allow it to bypass this restriction.
+
+
+
+
+que 7.  Design a class House with a private member address. Derive a class Apartment from House that adds a method getAddress() to return the address of the apartment.
+
+ans 7--->
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class House{
+    private:
+        string address;
+    public:
+        House(string s){
+            address=s;
+        }
+        string sol(){
+            return address;
+        }
+    
+};
+
+class Apartment:public House{
+    public:
+        Apartment(string s):House(s){}
+        void getAddress(){
+            cout<<sol();
+        }
+};
+
+int main(){
+    
+    Apartment obj("bikaner");
+    obj.getAddress();
+    
+    
+    return 0;
+}
+
+
+
+
+
+que 8.  Implement a base class Computer with a private member brand. Derive a class Laptop from Computer that adds a method getBrand() to return the brand of the laptop.
+
+ans 8--->
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Computer{
+    private:
+        string brand;
+    public:
+        Computer(string s){
+            brand=s;
+        }
+        string sol(){
+            return brand;
+        }
+    
+};
+
+class Laptop:public Computer{
+    public:
+        Laptop(string s):Computer(s){}
+        void getBrand(){
+            cout<<sol();
+        }
+};
+
+int main(){
+    
+    Laptop obj("acer");
+    obj.getBrand();
+    
+    
+    return 0;
+}
+
+
+
+
+
+que 9. Create a class Student with private members studentId and grade. Derive a class GraduateStudent from Student that adds a method getGrade() to return the grade of the graduate student.
+
+ans 9--->
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Student {
+    private:
+        int studentid;
+        char grade;
+    public:
+        Student(int one, char two){
+            studentid=one;
+            grade=two;
+        }
+        char send(){
+            return grade;
+        }
+    
+};
+
+class GraduateStudent : public Student{
+    public:
+        GraduateStudent(int one, char two):Student(one,two){};
+        void getGrade(){
+            cout<<send();
+        }
+};
+
+
+
+int main() {
+
+    GraduateStudent obj(1,'A');
+    obj.getGrade();
+    return 0;
+}
+
+
+
+
+
+que 10.  Design a class Member with a private member membershipId. Derive a class VIPMember from Member that adds a method getMembershipId() to return the membership ID.
+
+ans 10--->
+
+ #include<bits/stdc++.h>
+using namespace std;
+
+class Member {
+    private:
+        int membershipid;
+    public:
+        Member(int one){
+            membershipid=one;
+        }
+        int sol(){
+            return membershipid;
+        }
+    
+};
+
+class VIPMember : public Member{
+    public:
+        VIPMember(int one):Member(one){}
+        void getMembershipid(){
+            cout<<sol();
+        }
+};
+
+
+
+int main() {
+
+    VIPMember obj(1);
+    obj.getMembershipid();
+    return 0;
+}
+
